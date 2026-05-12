@@ -96,7 +96,7 @@ is **not gauge invariant**.
 
 This issue is resolved through spontaneous symmetry breaking, which can be visualized using the so-called *Mexican hat potential*.
 
-![Mexican hat analogy](hat.png)
+![Mexican hat analogy](../figures/hat.png)
 
 *Figure: Mexican-hat–like geometry illustrating spontaneous symmetry breaking. The symmetric point is unstable, while the circle of minima represents degenerate vacua. Fluctuations along the valley correspond to Nambu–Goldstone modes.*
 
@@ -138,7 +138,7 @@ $$
 
 Here, $N$ is the number of colors and $N_f$ is the number of fermion flavors.
 
-![betascale](energyscale.png)
+![betascale](../figures/energyscale.png)
 
 *Figure: Asymptotic behavior of the beta function (black solid line)*
 
