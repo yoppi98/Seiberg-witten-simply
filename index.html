@@ -1,37 +1,385 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8">
-  <title>Seiberg–Witten Notes</title>
-
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$']],
-        displayMath: [['$$', '$$']]
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>seiberg_witten_intro_notes</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
       }
-    };
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
 </head>
-
 <body>
-  <h1>Seiberg–Witten Theory: Personal Notes</h1>
-
-  <p>
-    <a href="seiberg_witten_intro_notes.md">Open Markdown notes</a>
-  </p>
-
-  <h2>Example equation</h2>
-
-  $$
-  \beta(g) = -\frac{g^3}{48\pi^2}(11N - 2N_f)
-  $$
-
-  <h2>Figure</h2>
-
-  <img src="hat.png" width="400">
-
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<h1 id="seibergwitten-theory-personal-notes">Seiberg–Witten Theory:
+Personal Notes</h1>
+<p>These notes summarize what I learned from a activity on
+Seiberg–Witten theory. The goal is to understand the concept from a
+physics perspective.</p>
+<hr />
+<h2 id="motivation">Motivation</h2>
+<p>Seiberg–Witten theory gives an exact description of certain
+four-dimensional supersymmetric gauge theories. The important point is
+that it can describe strongly coupled physics without relying on
+perturbation theory.</p>
+<p>The rough flow of this note is:</p>
+<ol type="1">
+<li>Review gauge theory<br />
+</li>
+<li>Gauge Invariants and SSB</li>
+<li>Beta Function</li>
+<li>What is Perturbation Theory?</li>
+<li>Seiberg–Witten Theory and Duality</li>
+</ol>
+<hr />
+<h2 id="review-of-gauge-theory">1. Review of Gauge Theory</h2>
+<p>In classical electromagnetism, the physical fields are:</p>
+<p><span class="math display">\[
+\mathbf{E}, \mathbf{B}
+\]</span></p>
+<p>These can be written in terms of scalar and vector potentials:</p>
+<p><span class="math display">\[
+\mathbf{E} = -\nabla \phi - \frac{\partial \mathbf{A}}{\partial t}
+\]</span></p>
+<p><span class="math display">\[
+\mathbf{B} = \nabla \times \mathbf{A}
+\]</span></p>
+<p>A charged particle experiences the Lorentz force:</p>
+<p><span class="math display">\[
+m\ddot{\mathbf{x}} = q \left( \mathbf{E} + \dot{\mathbf{x}} \times
+\mathbf{B} \right)
+\]</span></p>
+<p>The key point is that <span class="math inline">\(\phi\)</span> and
+<span class="math inline">\(\mathbf{A}\)</span> are not unique. This
+freedom is called <strong>gauge freedom</strong>.</p>
+<hr />
+<p>In tensor formalism, these relations can be rewritten as:</p>
+<h3 id="covariant-derivative-and-field-strength">Covariant Derivative
+and Field Strength</h3>
+<p><span class="math display">\[
+D_\mu = \partial_\mu - i e A_\mu
+\]</span></p>
+<p><span class="math display">\[
+[D_\mu, D_\nu] = -i e F_{\mu\nu}
+\]</span></p>
+<p>Gauge transformation:</p>
+<p><span class="math display">\[
+\phi \rightarrow \phi&#39; = e^{-i e \theta(x)} \phi
+\]</span></p>
+<hr />
+<h3 id="standard-model-gauge-group">Standard Model Gauge Group</h3>
+<p><span class="math display">\[
+SU(3)_C \times SU(2)_L \times U(1)_Y
+\]</span></p>
+<p>Here, <span class="math inline">\(C\)</span> denotes color and <span
+class="math inline">\(L\)</span> denotes left-handed fields.</p>
+<p>Spontaneous symmetry breaking (SSB) gives rise to
+electromagnetism:</p>
+<p><span class="math display">\[
+SU(2)_L \times U(1)_Y \rightarrow U(1)_{\mathrm{EM}}
+\]</span></p>
+<hr />
+<h2 id="gauge-invariance-and-ssb">2. Gauge Invariance and SSB</h2>
+<p>A naive mass term:</p>
+<p><span class="math display">\[
+m^2 A_\mu A^\mu
+\]</span></p>
+<p>is <strong>not gauge invariant</strong>.</p>
+<p>This issue is resolved through spontaneous symmetry breaking, which
+can be visualized using the so-called <em>Mexican hat
+potential</em>.</p>
+<figure>
+<img src="hat.png" alt="Mexican hat analogy" />
+<figcaption aria-hidden="true">Mexican hat analogy</figcaption>
+</figure>
+<p><em>Figure: Mexican-hat–like geometry illustrating spontaneous
+symmetry breaking. The symmetric point is unstable, while the circle of
+minima represents degenerate vacua. Fluctuations along the valley
+correspond to Nambu–Goldstone modes.</em></p>
+<hr />
+<h3 id="spontaneous-symmetry-breaking">Spontaneous Symmetry
+Breaking</h3>
+<p>Potential:</p>
+<p><span class="math display">\[
+V(\phi) = \left(|\phi|^2 - \frac{v^2}{2}\right)^2
+\]</span></p>
+<p>Expand around the vacuum:</p>
+<p><span class="math display">\[
+\phi = \phi_0 + \delta \phi
+\]</span></p>
+<ul>
+<li>Massive mode<br />
+</li>
+<li>Massless Nambu–Goldstone mode</li>
+</ul>
+<hr />
+<h2 id="beta-function">3. Beta Function</h2>
+<p><span class="math display">\[
+\beta(g) = \mu \frac{dg}{d\mu}
+\]</span></p>
+<p>One-loop result:</p>
+<p><span class="math display">\[
+\beta(g) = -\frac{g^3}{48\pi^2}(11N - 2N_f)
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\beta &lt; 0\)</span> → asymptotic
+freedom (QCD)<br />
+</li>
+<li><span class="math inline">\(\beta &gt; 0\)</span> → QED</li>
+</ul>
+<p>Here, <span class="math inline">\(N\)</span> is the number of colors
+and <span class="math inline">\(N_f\)</span> is the number of fermion
+flavors.</p>
+<figure>
+<img src="energyscale.png" alt="betascale" />
+<figcaption aria-hidden="true">betascale</figcaption>
+</figure>
+<p><em>Figure: Asymptotic behavior of the beta function (black solid
+line)</em></p>
+<p>Studying strong coupling is difficult because perturbation theory
+becomes invalid.</p>
+<hr />
+<h2 id="what-is-perturbation-theory">4. What is Perturbation
+Theory?</h2>
+<p>Consider the Gaussian integral:</p>
+<p><span class="math display">\[
+\int dx\, e^{-\frac{a}{2}x^2} = \sqrt{\frac{2\pi}{a}}
+\]</span></p>
+<p>This can be solved exactly. Now consider an interacting case:</p>
+<p><span class="math display">\[
+I(\lambda) = \int dx\, e^{-\frac{a}{2}x^2 - \lambda x^4}
+\]</span></p>
+<p>To evaluate this, we expand:</p>
+<p><span class="math display">\[
+e^{-\lambda x^4}
+= \sum_{n=0}^{\infty} \frac{(-\lambda)^n x^{4n}}{n!}
+\]</span></p>
+<p>Substituting back:</p>
+<p><span class="math display">\[
+I(\lambda) = \sum_{n=0}^{\infty} \int dx\, e^{-\frac{a}{2}x^2}
+\frac{(-\lambda)^n x^{4n}}{n!}
+\]</span></p>
+<p>Strictly speaking, exchanging the sum and integral is not always
+valid, and the series may not converge.</p>
+<p>However, if <span class="math inline">\(\lambda\)</span> is small,
+higher-order terms can be neglected. This is the basic idea of
+perturbation theory.</p>
+<hr />
+<h3 id="strong-coupling-problem">Strong Coupling Problem</h3>
+<p><span class="math display">\[
+\text{small coupling} \Rightarrow \text{perturbation works}
+\]</span></p>
+<p><span class="math display">\[
+\text{large coupling} \Rightarrow \text{fails}
+\]</span></p>
+<p>QCD becomes strongly coupled at low energy, making it difficult to
+analyze.</p>
+<p>Seiberg–Witten theory addresses this issue in 4D <span
+class="math inline">\(\mathcal{N}=2\)</span> supersymmetric Yang–Mills
+theory.</p>
+<hr />
+<h2 id="seibergwitten-theory-and-duality">5. Seiberg–Witten Theory and
+Duality</h2>
+<h3 id="what-is-duality">What is Duality?</h3>
+<p>Duality means that two different descriptions of a theory are
+connected and describe the same physics.</p>
+<p>Examples: - Kramers–Wannier duality<br />
+- Electromagnetic duality</p>
+<p>Maxwell symmetry:</p>
+<p><span class="math display">\[
+(\mathbf{E}, \mathbf{B}) \rightarrow (\mathbf{B}, -\mathbf{E})
+\]</span></p>
+<hr />
+<h3 id="seibergwitten-theory">Seiberg–Witten Theory</h3>
+<p>Exact solution for:</p>
+<p><span class="math display">\[
+\mathcal{N}=2 \quad SU(2) \text{ Yang–Mills}
+\]</span></p>
+<p>Key idea:</p>
+<p><span class="math display">\[
+\text{strong coupling}
+\Longleftrightarrow
+\text{weak coupling (dual)}
+\]</span></p>
+<hr />
+<h2 id="main-takeaway">6. Main Takeaway</h2>
+<ul>
+<li>Gauge symmetry restricts the structure of the theory<br />
+</li>
+<li>Perturbation theory fails at strong coupling<br />
+</li>
+<li>Seiberg–Witten theory provides an exact description of 4D <span
+class="math inline">\(\mathcal{N}=2\)</span> supersymmetric Yang–Mills
+theory</li>
+</ul>
+<hr />
+<h2 id="personal-summary">Personal Summary</h2>
+<p>In this note, we reviewed basic quantum field theory concepts,
+especially gauge theory, and their connection to Seiberg–Witten theory.
+We will study the details more carefully in the future.</p>
 </body>
 </html>
