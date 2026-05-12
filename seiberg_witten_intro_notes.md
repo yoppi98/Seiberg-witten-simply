@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 # Seiberg–Witten Theory: Personal Notes
 
 These notes summarize what I learned from a activity on Seiberg–Witten theory. The goal is to understand the concept from a physics perspective.
